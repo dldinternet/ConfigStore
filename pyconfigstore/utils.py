@@ -16,7 +16,7 @@ def getConfigDir():
 
 def createPath(path):
     if not os.path.exists(path):
-        os.makedirs(path, 0777)
+        os.makedirs(path, 0o0777)
         return True
 
 def createConfig(path, defaults, **kwargs):
@@ -37,12 +37,21 @@ def loadConfigs(path):
     createConfigPathSync(path)
     if os.path.isfile(path):
         with open(path, 'rb') as fp:
-            jsonConfigs = dict(json.load(fp))
+            try:
+                jsonConfigs = dict(json.load(fp))
+            finally:
+                fp.close()
         return jsonConfigs
 
 def writeConfigs(path, jsonData):
-    with open(path, 'wb') as fp:
-        json.dump(jsonData, fp)
+    with open(path, 'w') as fp:
+        try:
+            s = json.dumps(jsonData, indent=2)
+            fp.write(s)
+        except TypeError as te:
+            raise te
+        finally:
+            fp.close()
 
 def setConfigs(path, key=None, value=None, Object=None):
     

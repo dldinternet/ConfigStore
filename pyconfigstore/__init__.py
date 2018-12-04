@@ -1,9 +1,5 @@
-import os
 from os.path import join
-import sys
-import json
-from utils import *
-
+from .utils import *
 
 class ConfigStore:
     
@@ -26,8 +22,12 @@ class ConfigStore:
         self.path = join(self.configDir, self.pathPrefix)
         # self.all = {}
         createConfig(self.path, self.defaults, pathEntry=pathEntry)
-        self.Object = loadConfigs(self.path)
-        self.size = getConfigSize(self.path)
+        try:
+            self.Object = loadConfigs(self.path)
+        except ValueError:
+            self.Object = dict()
+            writeConfigs(self.path, self.Object)
+        self.size = len(self.Object)
 
     
     def all(self, Object=None):
