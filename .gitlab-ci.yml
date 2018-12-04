@@ -18,7 +18,20 @@ before_script:
   - semver || semver init
   - export VERSION=$(semver format '%M.%m.%p')
 
-build_and_push:
+py2:
+  image: 192491131326.dkr.ecr.us-east-1.amazonaws.com/mingle/core/gitlab-builder-python2:latest
+  stage: build
+  script:
+  - pip install --upgrade --extra-index-url=https://pypi.mingle.awsdev.infor.com -e .
+  - s3pypi --bucket pypi.mingle.awsdev.infor.com --index
+  tags:
+    - cicd
+    - ade-mingle-gitlab-runner-docker
+  only:
+    - develop
+
+py3:
+  image: 192491131326.dkr.ecr.us-east-1.amazonaws.com/mingle/core/gitlab-builder-python3:latest
   stage: build
   script:
   - pip install --upgrade --extra-index-url=https://pypi.mingle.awsdev.infor.com -e .
