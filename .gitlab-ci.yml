@@ -1,4 +1,4 @@
-image: 192491131326.dkr.ecr.us-east-1.amazonaws.com/mingle/core/gitlab-builder:0.8.8
+image: 192491131326.dkr.ecr.us-east-1.amazonaws.com/mingle/core/gitlab-builder:0.8.9
 
 stages:
   - build
