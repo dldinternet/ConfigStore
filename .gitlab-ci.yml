@@ -21,7 +21,7 @@ before_script:
 build_and_push:
   stage: build
   script:
-  - pip install --upgrade -r requirements.txt --extra-index-url=https://pypi.mingle.awsdev.infor.com -e .
+  - pip install --upgrade --extra-index-url=https://pypi.mingle.awsdev.infor.com -e .
   - s3pypi --bucket pypi.mingle.awsdev.infor.com --index
   tags:
     - cicd
