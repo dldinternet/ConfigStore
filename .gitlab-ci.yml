@@ -1,7 +1,8 @@
-image: 192491131326.dkr.ecr.us-east-1.amazonaws.com/mingle/core/gitlab-builder:latest
+image: 192491131326.dkr.ecr.us-east-1.amazonaws.com/mingle/core/gitlab-builder-python3:latest
 
 stages:
   - build
+  - release
 
 variables:
   CI_DEBUG_TRACE: "false"
@@ -15,27 +16,25 @@ before_script:
     [[ "`curl --help 2>&1 >/dev/null ; echo $?`" == "0" ]] &&
     export AWS_ZONE=`curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone` &&
     export AWS_REGION="`echo \"$AWS_ZONE\" | sed 's/[a-z]$//'`"
-  - semver || semver init
-  - export VERSION=$(semver format '%M.%m.%p')
+#  - semver || semver init
+#  - export VERSION=$(semver format '%M.%m.%p')
 
-py2:
-  image: 192491131326.dkr.ecr.us-east-1.amazonaws.com/mingle/core/gitlab-builder-python2:latest
+build:
   stage: build
   script:
-  - pip install --upgrade --extra-index-url=https://pypi.mingle.awsdev.infor.com -e .
-  - s3pypi --bucket pypi.mingle.awsdev.infor.com --index
+    - python setup.py clean build test
   tags:
     - cicd
     - ade-mingle-docker
   only:
-    - develop
+    - /^feature\/.*$/
+    - /^[0-9]+.*$/
 
-py3:
-  image: 192491131326.dkr.ecr.us-east-1.amazonaws.com/mingle/core/gitlab-builder-python3:latest
+release:
   stage: build
   script:
-  - pip install --upgrade --extra-index-url=https://pypi.mingle.awsdev.infor.com -e .
-  - s3pypi --bucket pypi.mingle.awsdev.infor.com --index
+    - python setup.py clean
+    - s3pypi --bucket pypi.mingle.awsdev.infor.com --index --check --verbose
   tags:
     - cicd
     - ade-mingle-docker
