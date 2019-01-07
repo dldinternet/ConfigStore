@@ -1,0 +1,4 @@
+pip
+wheel
+s3pypi
+bump2version
