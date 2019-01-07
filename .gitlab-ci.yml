@@ -26,7 +26,7 @@ py2:
   - s3pypi --bucket pypi.mingle.awsdev.infor.com --index
   tags:
     - cicd
-    - ade-configstore-python-docker
+    - ade-mingle-docker
   only:
     - develop
 
@@ -38,6 +38,6 @@ py3:
   - s3pypi --bucket pypi.mingle.awsdev.infor.com --index
   tags:
     - cicd
-    - ade-configstore-python-docker
+    - ade-mingle-docker
   only:
     - develop
