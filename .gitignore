@@ -9,8 +9,6 @@ dist
 htmlcov
 six-*.egg/
 *.orig
-.idea/
-*.iml
 *.log
 
 bak
