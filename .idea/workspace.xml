@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ee0d825-055d-4b46-8ea1-172a447677f2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/requirements_cicd.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.github/workflows/packagepublish.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/packagepublish.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/pythonpublish.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.python-version" beforeDir="false" afterPath="$PROJECT_DIR$/.python-version" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements_cicd.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements_cicd.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +58,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1576188072580</updated>
-      <workItem from="1576188073933" duration="994000" />
+      <workItem from="1576188073933" duration="3107000" />
     </task>
     <servers />
   </component>
