@@ -1,15 +1,9 @@
 name: Upload Python Package
 
-<<<<<<< Updated upstream
-on:
-  release:
-    types: [created]
-=======
 #on:
 #  release:
 #    types: [created,updated]
 on: [push]
->>>>>>> Stashed changes
 
 jobs:
   deploy:
